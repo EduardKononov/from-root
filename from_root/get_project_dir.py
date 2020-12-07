@@ -13,7 +13,7 @@ def get_project_dir():
     # packages installed using pip are stored in the 'site-packages'
     # if from_root is called from a package, we can quickly find the root
     if 'site-packages' in file_path.as_posix():
-        return Path(re.findall(r'.*site-packages/.*?/', the_most_recent)[0])
+        return Path(re.findall(r'.*site-packages/.*?/', file_path.as_posix())[0])
 
     path = file_path.parent
     while path.parents:

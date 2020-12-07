@@ -1,0 +1,1 @@
+rm -r build/ dist/ from_root.egg-info/

@@ -15,9 +15,8 @@ The information about `from_root` parameters can be found in its docstring (`fro
 
 ```python
 from from_root import from_root
-from pathlib import Path
 
-path = from_root('a', 'b', 'c', 'file.txt', create_parent_dirs=True, return_type=Path)
+path = from_root('a', 'b', 'c', 'file.txt', create_parent_dirs=True, pathlib=True)
 with path.open('w') as file:
     file.write('from-root')
 ```

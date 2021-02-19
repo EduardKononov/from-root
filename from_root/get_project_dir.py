@@ -2,10 +2,10 @@ import re
 import traceback
 from pathlib import Path
 
-__all__ = ['get_project_dir']
+__all__ = ['get_project_root']
 
 
-def get_project_dir():
+def get_project_root():
     stack = reversed(traceback.extract_stack())
 
     for frame in stack:
@@ -35,11 +35,11 @@ def get_project_dir():
             path = path.parent
 
     # TODO(ekon): put more details
-    raise FileExistsError(
-        f'There is neither ".git" directory nor ".project-root" file — '
-        f'impossible to detect root folder'
+    raise FileNotFoundError(
+        f'There is neither ".git" directory nor ".project-root" file, '
+        f'cannot detect root folder'
     )
 
 
 if __name__ == '__main__':
-    print(get_project_dir())
+    print(get_project_root())

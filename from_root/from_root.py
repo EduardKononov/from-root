@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Iterable, Union
 
-from from_root.get_project_dir import get_project_dir
+from from_root.get_project_dir import get_project_root
 
 __all__ = ['from_root']
 
@@ -21,7 +21,7 @@ def from_root(
     :return: `str` or `pathlib.Path`
     """
     args = map(str, args)
-    path = get_project_dir().joinpath(*args)
+    path = get_project_root().joinpath(*args)
 
     if create_parent_dirs:
         _create_if_does_not_exist(path)

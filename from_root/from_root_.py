@@ -1,6 +1,7 @@
 from pathlib import Path
 
-from from_root.utils import mkdirs_if_needed, get_project_root
+from from_root.utils import get_project_root
+from from_root.from_base import from_base
 
 __all__ = ['from_root']
 
@@ -14,12 +15,11 @@ def from_root(*args: str, mkdirs=False) -> Path:
     :return: `pathlib.Path`
     """
 
-    path = get_project_root().joinpath(*args)
-
-    if mkdirs:
-        mkdirs_if_needed(path)
-
-    return path
+    return from_base(
+        args,
+        mkdirs=mkdirs,
+        base_path=get_project_root(),
+    )
 
 
 def main():

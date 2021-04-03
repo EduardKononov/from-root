@@ -1,7 +1,7 @@
 import traceback
 from pathlib import Path
 
-from from_root.utils import mkdirs_if_needed
+from from_root.from_base import from_base
 
 __all__ = ['from_here']
 
@@ -17,12 +17,12 @@ def from_here(*args: str, mkdirs=False) -> Path:
     """
 
     here_dir = Path(traceback.extract_stack()[-2].filename).parent
-    path = here_dir.joinpath(*args)
 
-    if mkdirs:
-        mkdirs_if_needed(path)
-
-    return path
+    return from_base(
+        args,
+        mkdirs=mkdirs,
+        base_path=here_dir,
+    )
 
 
 def main():

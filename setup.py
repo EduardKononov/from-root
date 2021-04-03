@@ -5,7 +5,7 @@ with open('README.md', 'r') as file:
 
 setuptools.setup(
     name='from-root',
-    version='1.0.0',
+    version='1.0.1',
     author='Eduard Konanau',
     author_email='aduard.kononov@gmail.com',
     description='Forget about working directory errors',

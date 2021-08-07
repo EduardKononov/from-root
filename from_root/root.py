@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from from_root.utils import get_project_root
-from from_root.from_base import from_base
+from from_root.base import from_base
 
 __all__ = ['from_root']
 

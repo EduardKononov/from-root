@@ -3,6 +3,8 @@ import setuptools
 with open('README.md', 'r') as file:
     long_description = file.read()
 
+# TODO(ekon): `poetry build`
+#             `poetry publish`
 setuptools.setup(
     name='from-root',
     version='1.0.2',

@@ -14,6 +14,7 @@ def from_base(args: Iterable[str], mkdirs: bool, base_path: Path):
         if mkdirs:
             path.mkdir(parents=True)
         else:
-            warnings.warn(f'{path} has not existing directories. Consider setting `mkdirs=True`')
+            # TODO(ekon): add global disabling of the message
+            warnings.warn(f'{path} has non-existing directories. Consider setting `mkdirs=True`')
 
     return path

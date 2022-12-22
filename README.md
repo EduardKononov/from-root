@@ -90,6 +90,3 @@ FILE_TXT_PATH = from_here('inner_package', 'insanely', 'deep', 'dir', 'file.txt'
 When `from_root` is called, folders in the current traceback are looked through one by one in order to find `.git`
 directory or `.project-root` file (might be empty; you have to create it on your own). The first one that contains at
 least one of them are considered as a root directory.
-
-There is a special case. If your package was installed by someone else via, for example, `pip`, the root directory is
-the one that is next to `site-packages` so there will be no conflicts with your usages of from-root and your users' ones

@@ -61,7 +61,7 @@ FILE_TXT_PATH = from_root('package', 'inner_package', 'insanely', 'deep', 'dir',
 from from_root import from_here
 
 # The only difference from `from_root` is that `from_here` allows you to declare relative paths
-# I think the examples speaks for themselves quite good. 
+# I think the examples speak for themselves quite good. 
 # Take a look at tree above and compare with `from_root` examples
 
 CONFIG_PATH = from_here('data.csv')

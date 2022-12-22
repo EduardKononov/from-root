@@ -5,7 +5,7 @@ import pytest
 from pytest_mock import MockerFixture
 
 from from_root import from_root
-from from_root.utils.get_project_root import ANCHORS
+from from_root.get_project_root import ANCHORS
 
 
 def path_exists(existing_paths: List[Path]):

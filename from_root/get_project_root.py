@@ -19,7 +19,6 @@ def get_project_root():
 
             path = path.parent
 
-    # TODO(ekon): put more details
     # TODO(ekon): add warning about relying on ".git"
     raise FileNotFoundError(
         f'No possible anchors found ({", ".join(ANCHORS)}), cannot detect root folder. '

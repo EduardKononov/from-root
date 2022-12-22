@@ -6,13 +6,11 @@ from from_root.base import from_base
 __all__ = ['from_here']
 
 
-def from_here(*args: str, mkdirs=False) -> Path:
+def from_here(*args: str) -> Path:
     """
     :param args:
     >>> from_here('dir1', 'dir2', 'file.txt')
     <DIRECTORY_WHERE_THIS_FUNCTION_WAS_CALLED>/dir1/dir2/file.txt
-    :param mkdirs:
-        if True, all non-existing directories after <DIRECTORY_WHERE_THIS_FUNCTION_WAS_CALLED> will be created
     :return: `pathlib.Path`
     """
 
@@ -20,7 +18,6 @@ def from_here(*args: str, mkdirs=False) -> Path:
 
     return from_base(
         args,
-        mkdirs=mkdirs,
         base_path=here_dir,
     )
 

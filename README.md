@@ -52,23 +52,6 @@ LOGO_PATH = ASSETS_DIR / 'logo.png'
 
 # no matter how deep it's located
 FILE_TXT_PATH = from_root('package', 'inner_package', 'insanely', 'deep', 'dir', 'file.txt')
-
-# assume you have stuff to save in a separate directory that does not exist yet.
-# If `mkdirs` is set to True (False by default), all the non existing directories in the path 
-# will be created before `from_root` returns. If a directory already exists, nothing happens
-
-import pickle
-
-RESULTS_DIR = from_root('package', 'deep', 'results', 'dir', mkdirs=True)
-results = {
-    'ones': [1, 1, 1],
-    'zeros': [2, 2, 2]
-}
-for name, data in results.items():
-    path = RESULTS_DIR / f'{name}.pkl'
-    # `FileNotFoundError` is not raised because `from_root` has created all non-existing directories
-    with path.open('wb') as file:
-        pickle.dump(data, file)
 ```
 
 #### `from_here` examples:

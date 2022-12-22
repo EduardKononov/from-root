@@ -1,10 +1,18 @@
 [tool.poetry]
 name = "from-root"
-version = "0.1.0"
+version = "1.1.0"
 description = "Forget about working directory errors"
 authors = ["Eduard Kononov <aduard.kononov@gmail.com>"]
 readme = "README.md"
-packages = [{include = "from_root"}]
+packages = [{ include = "from_root" }]
+classifiers = [
+    'Programming Language :: Python :: 3',
+    'License :: OSI Approved :: MIT License',
+    'Operating System :: OS Independent',
+]
+
+[tool.poetry.urls]
+"GitHub" = 'https://github.com/EduardKononov/from-root'
 
 [tool.poetry.dependencies]
 python = "^3.7"

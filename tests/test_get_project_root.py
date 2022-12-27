@@ -1,24 +1,17 @@
+import traceback
 from pathlib import Path
 from typing import List
 
 import pytest
 from pytest_mock import MockerFixture
 
-from from_root import from_root
-from from_root.get_project_root import ANCHORS
+from from_root.get_project_root import (
+    get_project_root,
+    ANCHORS,
+)
 
-
-def path_exists(existing_paths: List[Path]):
-    def inner(self: Path, *args, **kwargs):
-        if self in existing_paths:
-            return True
-        return False
-
-    return inner
-
-
-_SITE_PACKAGES = Path('/python/site-packages/')
-_USER_PROJECT = Path('/PyCharmProjects/project')
+_SITE_PACKAGES = Path('python', 'site-packages')
+_USER_PROJECT = Path('PyCharmProjects', 'project')
 
 
 @pytest.mark.parametrize(
@@ -95,25 +88,17 @@ _USER_PROJECT = Path('/PyCharmProjects/project')
         ),
     ],
 )
-def test_from_root(
+def test_get_project_root(
         tb: List[Path],
         existing_paths: List[Path],
         root_path: Path,
-        mocker: MockerFixture,
+        mock_get_project_root,
 ):
-    tb = [
-        mocker.Mock(filename=str(path))
-        for path in tb
-    ]
-    mocker.patch(
-        'traceback.extract_stack',
-        return_value=tb,
-    )
-    mocker.patch.object(Path, 'exists', path_exists(existing_paths))
+    mock_get_project_root(tb, existing_paths)
 
     if root_path is None:
         with pytest.raises(FileNotFoundError):
-            from_root()
+            get_project_root()
     else:
-        calculated_root = from_root()
+        calculated_root = get_project_root()
         assert Path(root_path) == calculated_root

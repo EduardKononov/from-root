@@ -2,7 +2,7 @@
 
 Are you fed up with that **annoying FileNotFoundError** when your working directory turns out to be something different
 from what you expected? Or, maybe, you are looking for an easy and robust way of declaring paths to configs and any data
-files in your project? We have got a solution, keep reading.
+files in your project? Yeah, that drives us all crazy.
 
 The package is really tiny, there are two function:
 
@@ -52,6 +52,31 @@ LOGO_PATH = ASSETS_DIR / 'logo.png'
 
 # no matter how deep it's located
 FILE_TXT_PATH = from_root('package', 'inner_package', 'insanely', 'deep', 'dir', 'file.txt')
+
+# If `mkdirs` is set to True (False by default), all *args will be treated as dir names 
+# and created for you. 
+# If a directory already exists, nothing happens.
+
+import pickle
+
+RESULTS_DIR = from_root('package', 'deep', 'results', 'dir', mkdirs=True)
+results = {
+    'ones': [1, 1, 1],
+    'zeros': [2, 2, 2]
+}
+for name, data in results.items():
+    path = RESULTS_DIR / f'{name}.pkl'
+    # `FileNotFoundError` is not raised because `from_root` has created all non-existing directories
+    with path.open('wb') as file:
+        pickle.dump(data, file)
+
+# WARNING: don't do this, you'll end up with data.json directory:
+with from_root('results', 'data.json', mkdirs=True).open('w') as file:
+    ...
+
+# Do this instead:
+with (from_root('results', mkdirs=True) / 'data.json').open('w') as file:
+    ...
 ```
 
 #### `from_here` examples:

@@ -7,7 +7,7 @@ __all__ = ['get_project_root']
 ANCHORS = ('.git', '.project-root')
 
 
-def get_project_root():
+def get_project_root() -> Path:
     py_paths = _extract_py_files_from_traceback()
 
     for path in py_paths:

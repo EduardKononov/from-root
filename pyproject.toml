@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "from-root"
-version = "1.2.0"
+version = "1.3.0"
 description = "Forget about working directory errors"
 authors = ["Eduard Kononov <aduard.kononov@gmail.com>"]
 readme = "README.md"
